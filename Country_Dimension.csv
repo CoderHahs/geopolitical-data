@@ -1,0 +1,10 @@
+CountryKey,Table Name,Long Name,Region,Currency Unit,Income Group,System of trade,Government Accounting concept,Lending category,Continent,Capital,Total Population
+CAN,Canada,Canada,North America,Canadian dollar,High income,General trade system,Consolidated central government,,North America,Ottawa,38005238.0
+COD,"Congo, Dem. Rep.",Democratic Republic of the Congo,Sub-Saharan Africa,Congolese franc,Low income,,Budgetary central government,IDA,Africa,Kinshasa,16425859.0
+IND,India,Republic of India,South Asia,Indian rupee,Lower middle income,General trade system,Consolidated central government,IBRD,Asia,New Delhi,89561404.0
+KEN,Kenya,Republic of Kenya,Sub-Saharan Africa,Kenyan shilling,Lower middle income,General trade system,Consolidated central government,Blend,Africa,Nairobi,1380004385.0
+MAR,Morocco,Kingdom of Morocco,Middle East & North Africa,Moroccan dirham,Lower middle income,Special trade system,Budgetary central government,IBRD,Africa,Rabat,53771300.0
+MEX,Mexico,United Mexican States,Latin America & Caribbean,Mexican peso,Upper middle income,General trade system,Consolidated central government,IBRD,North America,Mexico City,128932753.0
+TCD,Chad,Republic of Chad,Sub-Saharan Africa,Central African CFA franc,Low income,,,IDA,Africa,N'Djamena,36910558.0
+USA,United States,United States of America,North America,U.S. dollar,High income,General trade system,Consolidated central government,,North America,"Washington, D.C.",329484123.0
+YEM,"Yemen, Rep.",Republic of Yemen,Middle East & North Africa,Yemeni rial,Low income,Special trade system,,IDA,Africa,Sana'a,29825968.0
