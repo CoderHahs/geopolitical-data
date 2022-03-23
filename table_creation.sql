@@ -48,7 +48,7 @@ create table education_dimension(
     school_enrollment_secondary_female_net float,
     school_enrollment_secondary_male_net float,
     school_enrollment_tertiary_gross float,
-    school_enrollment_tertiary_female_gross float,
+    school_enrollment_tertiary_female_gross float
 );
 
 
@@ -127,7 +127,7 @@ create table health_dimension(
     prevalence_of_undernourishment_percentage_of_population float,
     vitamin_a_supplementation_coverage_rate_percentage_children_ages_6_to_59_months float,
     adolescent_fertility_rate_births_per_thousand_women_ages_15_to_19 float,
-    contraceptive_prevalence_any_method_percentage_married_women_ages_15_to_49 float,
+    contraceptive_prevalence_any_method_percentage_married_women_ages_15_to_49 float
 );
 /* for health dimension
 NOTICE:  identifier "total_alcohol_consumption_per_capita_female_liters_pure_project_estimates_female_15_and_above" will be truncated to "total_alcohol_consumption_per_capita_female_liters_pure_project"
@@ -191,7 +191,7 @@ create table naturalDisaster_Dimension(
     reconstruction_costs_000_US_dollars float,
 	insured_damages_000US numeric,
     total_damages_000_US_dollars float,
-    cpi float,
+    cpi float
 );
 
 create table politicalEvent_Dimension(
@@ -513,7 +513,7 @@ create table fact_table(
     Human_Development_Index float,
     Quality_of_Life_Index float,
     Development_Index numeric,
-    HealthKey float,
+    HealthKey numeric,
     FOREIGN key (HealthKey) references health_dimension(HealthKey),
     Total_alcohol_consumption_per_capita_female_liters_of_pure_alcohol_projected_estimates_female_15_years_of_age float,
     Total_alcohol_consumption_per_capita_liters_of_pure_alcohol_projected_estimates_15_years_of_age float,
@@ -586,7 +586,7 @@ create table fact_table(
     Vitamin_A_supplementation_coverage_rate_of_children_ages_6_59_months float,
     Adolescent_fertility_rate_births_per_1_000_women_ages_15_19 float,
     Contraceptive_prevalence_any_method_of_married_women_ages_15_49 float,
-    PopulationKey float,
+    PopulationKey numeric,
     FOREIGN key (PopulationKey) references population_dimension(PopulationKey),
     Number_of_deaths_ages_5_9_years float,
     Number_of_deaths_ages_10_14_years float,
@@ -769,7 +769,7 @@ create table fact_table(
     Urban_population_growth_annual float,
     Urban_population float,
     Urban_population_of_total_population float,
-    QualityOfLifeKey float,
+    QualityOfLifeKey numeric,
     FOREIGN key (QualityOfLifeKey) references qualityoflife_dimension(QualityOfLifeKey),
     GNI_per_capita_Atlas_method_current_US float,
     female_Mortality_from_CVD_cancer_diabetes_or_CRD_between_exact_ages_30_and_70 float,
@@ -823,7 +823,7 @@ create table fact_table(
     Domestic_private_health_expenditure_per_capita_current_US float,
     Labor_force_female_of_total_labor_force float,
     Labor_force_total float,
-    EducationKey float,
+    EducationKey numeric,
     FOREIGN key (EducationKey) references education_dimension(EducationKey),
     Literacy_rate_youth_male_of_males_ages_15_24 float,
     Literacy_rate_youth_total_of_people_ages_15_24 float,
@@ -847,7 +847,7 @@ create table fact_table(
     School_enrollment_secondary_male_net float,
     School_enrollment_tertiary_gross float,
     School_enrollment_tertiary_female_gross float,
-    PoliticalEventKey float,
+    PoliticalEventKey numeric,
     FOREIGN key (PoliticalEventKey) references politicalEvent_Dimension(PoliticalEventKey),
     SumEvents float,
     TotalEvents float,
@@ -860,7 +860,7 @@ create table fact_table(
     AvgNumMentions float,
     SumNumMentions float,
     AvgAvgTone float,
-    NaturalDisasterEventKey float,
+    NaturalDisasterEventKey numeric,
     FOREIGN key (NaturalDisasterEventKey) references naturaldisaster_Dimension(NaturalDisasterEventKey),
     Disaster_Subgroup varchar(1000),
     Disaster_Type varchar(1000),
