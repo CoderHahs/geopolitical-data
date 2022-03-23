@@ -49,8 +49,6 @@ create table education_dimension(
     school_enrollment_secondary_male_net float,
     school_enrollment_tertiary_gross float,
     school_enrollment_tertiary_female_gross float,
-    FOREIGN key (countryKey) references country_dimension(countryKey) ON DELETE CASCADE,
-    FOREIGN key (monthKey) references month_dimension(monthKey) ON DELETE CASCADE
 );
 
 
@@ -130,8 +128,6 @@ create table health_dimension(
     vitamin_a_supplementation_coverage_rate_percentage_children_ages_6_to_59_months float,
     adolescent_fertility_rate_births_per_thousand_women_ages_15_to_19 float,
     contraceptive_prevalence_any_method_percentage_married_women_ages_15_to_49 float,
-    FOREIGN key (countryKey) references country_dimension(countryKey) ON DELETE CASCADE,
-    FOREIGN key (monthKey) references month_dimension(monthKey) ON DELETE CASCADE
 );
 /* for health dimension
 NOTICE:  identifier "total_alcohol_consumption_per_capita_female_liters_pure_project_estimates_female_15_and_above" will be truncated to "total_alcohol_consumption_per_capita_female_liters_pure_project"
@@ -196,17 +192,12 @@ create table naturalDisaster_Dimension(
 	insured_damages_000US numeric,
     total_damages_000_US_dollars float,
     cpi float,
-    FOREIGN key (start_month_key) references month_dimension(monthKey),
-    FOREIGN key (end_month_key) references month_dimension(monthKey),
-    FOREIGN key (countryKey) references country_dimension(countryKey) ON DELETE CASCADE
 );
 
 create table politicalEvent_Dimension(
     politicalEventKey numeric primary key,
     countryKey varchar(50) not null,
-    FOREIGN key (countryKey) references country_dimension(countryKey) ON DELETE CASCADE,
     monthKey numeric not null,
-    FOREIGN key (monthKey) references month_dimension(monthKey) ON DELETE CASCADE,
     sumEvents numeric,
     totalEvents numeric,
     normalizedEvents1000 float,
@@ -223,9 +214,7 @@ create table politicalEvent_Dimension(
 create table qualityOfLife_Dimension(
     QualityOfLifeKey numeric PRIMARY KEY,
     countryKey varchar(50) not null, 
-    FOREIGN key (countryKey) references country_dimension(countryKey) ON DELETE CASCADE,
     monthKey numeric not null, 
-    FOREIGN key (monthKey) references month_dimension(monthKey) ON DELETE CASCADE,	
     GNI_per_capita_Atlas_method_current_US float,
     female_Mortality_from_CVD_cancer_diabetes_or_CRD_between_exact_ages_30_and_70 float,
     male_Mortality_from_CVD_cancer_diabetes_or_CRD_between_exact_ages_30_and_70 float,
@@ -311,9 +300,7 @@ NOTICE:  identifier "domestic_private_health_expenditure_of_current_health_expen
 create table population_dimension(
     populationKey numeric PRIMARY KEY,
     countryKey varchar(50) not null,
-    FOREIGN key (countryKey) references country_dimension(countryKey) ON DELETE CASCADE,
     monthKey numeric,
-    FOREIGN key (monthKey) references month_dimension(monthKey),
     Number_of_deaths_ages_5_9_years float,
     Number_of_deaths_ages_10_14_years float,
     Number_of_deaths_ages_15_19_years float,
@@ -527,6 +514,7 @@ create table fact_table(
     Quality_of_Life_Index float,
     Development_Index numeric,
     HealthKey float,
+    FOREIGN key (HealthKey) references health_dimension(HealthKey),
     Total_alcohol_consumption_per_capita_female_liters_of_pure_alcohol_projected_estimates_female_15_years_of_age float,
     Total_alcohol_consumption_per_capita_liters_of_pure_alcohol_projected_estimates_15_years_of_age float,
     Total_alcohol_consumption_per_capita_male_liters_of_pure_alcohol_projected_estimates_male_15_years_of_age float,
@@ -599,6 +587,7 @@ create table fact_table(
     Adolescent_fertility_rate_births_per_1_000_women_ages_15_19 float,
     Contraceptive_prevalence_any_method_of_married_women_ages_15_49 float,
     PopulationKey float,
+    FOREIGN key (PopulationKey) references population_dimension(PopulationKey),
     Number_of_deaths_ages_5_9_years float,
     Number_of_deaths_ages_10_14_years float,
     Number_of_deaths_ages_15_19_years float,
@@ -781,6 +770,7 @@ create table fact_table(
     Urban_population float,
     Urban_population_of_total_population float,
     QualityOfLifeKey float,
+    FOREIGN key (QualityOfLifeKey) references qualityoflife_dimension(QualityOfLifeKey),
     GNI_per_capita_Atlas_method_current_US float,
     female_Mortality_from_CVD_cancer_diabetes_or_CRD_between_exact_ages_30_and_70 float,
     male_Mortality_from_CVD_cancer_diabetes_or_CRD_between_exact_ages_30_and_70 float,
@@ -834,6 +824,7 @@ create table fact_table(
     Labor_force_female_of_total_labor_force float,
     Labor_force_total float,
     EducationKey float,
+    FOREIGN key (EducationKey) references education_dimension(EducationKey),
     Literacy_rate_youth_male_of_males_ages_15_24 float,
     Literacy_rate_youth_total_of_people_ages_15_24 float,
     Literacy_rate_adult_female_of_females_ages_15_and_above float,
@@ -857,6 +848,7 @@ create table fact_table(
     School_enrollment_tertiary_gross float,
     School_enrollment_tertiary_female_gross float,
     PoliticalEventKey float,
+    FOREIGN key (PoliticalEventKey) references politicalEvent_Dimension(PoliticalEventKey),
     SumEvents float,
     TotalEvents float,
     NormalizedEvents1000 float,
@@ -869,6 +861,7 @@ create table fact_table(
     SumNumMentions float,
     AvgAvgTone float,
     NaturalDisasterEventKey float,
+    FOREIGN key (NaturalDisasterEventKey) references naturaldisaster_Dimension(NaturalDisasterEventKey),
     Disaster_Subgroup varchar(1000),
     Disaster_Type varchar(1000),
     Disaster_Subtype varchar(1000),
