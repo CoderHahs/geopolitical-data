@@ -27,9 +27,9 @@ where f.naturaldisastereventkey=nat.naturaldisastereventkey and mon.monthkey=f.m
 
 /*4 OLAP QUERIES*/
 /*COmparring literacy_rate_youth_male_15_to_24 of Mexico in 2005 vs 2008) */
-SELECT DISTINCT f.countrykey, health.number_of_maternal_deaths, health.lifetime_risk_of_maternal_death_percentage
-FROM fact_table f, health_dimension health, month_dimension mon
-where f.healthkey=health.healthkey and mon.monthkey=f.monthkey and mon.year='2009'
+SELECT DISTINCT f.countrykey,f.year, edu.literacy_rate_youth_male_15_to_24
+FROM fact_table f, education_dimension edu, month_dimension mon
+where f.educationkey=edu.educationkey and f.countrykey='MEX' and mon.monthkey=f.monthkey and (mon.year='2008' or mon.year='2005') and edu.literacy_rate_youth_male_15_to_24 is not NULL;
 
 /*Comparing prevalence_of_overweight_adults_percentage_of_adults of canada and USA for every year in dataset*/
 SELECT DISTINCT f.countrykey,mon.year, health.prevalence_of_overweight_adults_percentage_of_adults
